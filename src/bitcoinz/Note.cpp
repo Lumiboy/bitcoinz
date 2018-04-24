@@ -5,7 +5,7 @@
 #include "version.h"
 #include "streams.h"
 
-#include "zcash/util.h"
+#include "bitcoinz/util.h"
 
 namespace libzcash {
 

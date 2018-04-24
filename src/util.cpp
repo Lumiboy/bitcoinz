@@ -444,10 +444,10 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Zcash
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Zcash
-    // Mac: ~/Library/Application Support/Zcash
-    // Unix: ~/.zcash
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\BitcoinZ
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\BitcoinZ
+    // Mac: ~/Library/Application Support/BitcoinZ
+    // Unix: ~/.bitcoinz
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "BitcoinZ";
@@ -594,14 +594,14 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good())
-        throw missing_zcash_conf();
+        throw missing_bitcoinz_conf();
 
     set<string> setOptions;
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override zcash.conf
+        // Don't overwrite existing settings so command line settings override bitcoinz.conf
         string strKey = string("-") + it->string_key;
         if (mapSettingsRet.count(strKey) == 0)
         {
@@ -618,7 +618,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "zcashd.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "bitcoinzd.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

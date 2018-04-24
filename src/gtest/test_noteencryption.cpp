@@ -3,8 +3,8 @@
 
 #include <stdexcept>
 
-#include "zcash/NoteEncryption.hpp"
-#include "zcash/prf.h"
+#include "bitcoinz/NoteEncryption.hpp"
+#include "bitcoinz/prf.h"
 #include "crypto/sha256.h"
 
 class TestNoteDecryption : public ZCNoteDecryption {

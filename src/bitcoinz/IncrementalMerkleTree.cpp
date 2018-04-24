@@ -2,9 +2,9 @@
 
 #include <boost/foreach.hpp>
 
-#include "zcash/IncrementalMerkleTree.hpp"
+#include "bitcoinz/IncrementalMerkleTree.hpp"
 #include "crypto/sha256.h"
-#include "zcash/util.h"
+#include "bitcoinz/util.h"
 
 namespace libzcash {
 

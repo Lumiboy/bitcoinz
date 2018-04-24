@@ -3,7 +3,7 @@
 
 #include "consensus/validation.h"
 #include "main.h"
-#include "zcash/Proof.hpp"
+#include "bitcoinz/Proof.hpp"
 
 class MockCValidationState : public CValidationState {
 public:

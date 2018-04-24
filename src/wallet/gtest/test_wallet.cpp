@@ -9,9 +9,9 @@
 #include "random.h"
 #include "utiltest.h"
 #include "wallet/wallet.h"
-#include "zcash/JoinSplit.hpp"
-#include "zcash/Note.hpp"
-#include "zcash/NoteEncryption.hpp"
+#include "bitcoinz/JoinSplit.hpp"
+#include "bitcoinz/Note.hpp"
+#include "bitcoinz/NoteEncryption.hpp"
 
 #include <boost/filesystem.hpp>
 

@@ -27,4 +27,4 @@ then
     echo "rpcpassword=rpc`pwgen 15 1`" >> ~/.bitcoinz/bitcoinz.conf
 fi
 
-./zcashd
+./bitcoinzd

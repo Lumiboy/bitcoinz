@@ -10,7 +10,7 @@
 #include "wallet/db.h"
 #include "key.h"
 #include "keystore.h"
-#include "zcash/Address.hpp"
+#include "bitcoinz/Address.hpp"
 
 #include <list>
 #include <stdint.h>

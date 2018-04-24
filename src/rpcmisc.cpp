@@ -23,7 +23,7 @@
 
 #include <univalue.h>
 
-#include "zcash/Address.hpp"
+#include "bitcoinz/Address.hpp"
 
 using namespace std;
 

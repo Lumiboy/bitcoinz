@@ -27,8 +27,8 @@
 
 #include "zcbenchmarks.h"
 
-#include "zcash/Zcash.h"
-#include "zcash/IncrementalMerkleTree.hpp"
+#include "bitcoinz/BitcoinZ.h"
+#include "bitcoinz/IncrementalMerkleTree.hpp"
 
 using namespace libzcash;
 // This method is based on Shutdown from init.cpp

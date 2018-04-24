@@ -11,7 +11,7 @@
 #include "utilstrencodings.h"
 #include "test/test_bitcoin.h"
 
-#include "zcash/Address.hpp"
+#include "bitcoinz/Address.hpp"
 
 #include <string>
 #include <vector>

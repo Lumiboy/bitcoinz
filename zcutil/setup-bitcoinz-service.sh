@@ -38,7 +38,7 @@ cat > /etc/systemd/system/bitcoinz.service << EOF
 Description=bitcoinz
 
 [Service]
-ExecStart=`cd ~; pwd`/bitcoinz-pkg/zcashd
+ExecStart=`cd ~; pwd`/bitcoinz-pkg/bitcoinzd
 User=$1
 Restart=always
 

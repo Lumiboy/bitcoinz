@@ -10,7 +10,7 @@ https://github.com/zcash/zips/blob/master/protocol/protocol.pdf
 #include "uint256.h"
 #include "uint252.h"
 
-#include "zcash/Zcash.h"
+#include "bitcoinz/BitcoinZ.h"
 
 namespace libzcash {
 

@@ -16,8 +16,8 @@
 #include "serialize.h"
 #include "streams.h"
 
-#include "zcash/IncrementalMerkleTree.hpp"
-#include "zcash/util.h"
+#include "bitcoinz/IncrementalMerkleTree.hpp"
+#include "bitcoinz/util.h"
 
 #include <libsnark/common/default_types/r1cs_ppzksnark_pp.hpp>
 #include <libsnark/zk_proof_systems/ppzksnark/r1cs_ppzksnark/r1cs_ppzksnark.hpp>

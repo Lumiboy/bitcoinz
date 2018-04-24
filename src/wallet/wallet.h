@@ -21,7 +21,7 @@
 #include "wallet/crypter.h"
 #include "wallet/wallet_ismine.h"
 #include "wallet/walletdb.h"
-#include "zcash/Address.hpp"
+#include "bitcoinz/Address.hpp"
 #include "base58.h"
 
 #include <algorithm>

@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
 #include "primitives/transaction.h"
-#include "zcash/Note.hpp"
-#include "zcash/Address.hpp"
+#include "bitcoinz/Note.hpp"
+#include "bitcoinz/Address.hpp"
 
 extern ZCJoinSplit* params;
 extern int GenZero(int n);

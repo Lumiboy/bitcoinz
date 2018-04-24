@@ -9,8 +9,8 @@
 #include "amount.h"
 #include "base58.h"
 #include "primitives/transaction.h"
-#include "zcash/JoinSplit.hpp"
-#include "zcash/Address.hpp"
+#include "bitcoinz/JoinSplit.hpp"
+#include "bitcoinz/Address.hpp"
 #include "wallet.h"
 
 #include <unordered_map>

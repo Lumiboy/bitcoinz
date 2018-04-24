@@ -4,13 +4,13 @@
 
 #include <boost/foreach.hpp>
 
-#include "zcash/prf.h"
+#include "bitcoinz/prf.h"
 #include "util.h"
 
-#include "zcash/JoinSplit.hpp"
-#include "zcash/Note.hpp"
-#include "zcash/NoteEncryption.hpp"
-#include "zcash/IncrementalMerkleTree.hpp"
+#include "bitcoinz/JoinSplit.hpp"
+#include "bitcoinz/Note.hpp"
+#include "bitcoinz/NoteEncryption.hpp"
+#include "bitcoinz/IncrementalMerkleTree.hpp"
 
 using namespace libzcash;
 
