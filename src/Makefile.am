@@ -611,4 +611,4 @@ include Makefile.test.include
 include Makefile.gtest.include
 endif
 
-include Makefile.bitcoinz.include
+include Makefile.zcash.include
