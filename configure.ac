@@ -447,8 +447,12 @@ if test x$use_hardening != xno; then
   AX_CHECK_COMPILE_FLAG([-Wstack-protector],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -Wstack-protector"],[AC_MSG_ERROR(Cannot enable -Wstack-protector)])
   AX_CHECK_COMPILE_FLAG([-fstack-protector-all],[HARDENED_CXXFLAGS="$HARDENED_CXXFLAGS -fstack-protector-all"],[AC_MSG_ERROR(Cannot enable -fstack-protector-all)])
 
-  AX_CHECK_PREPROC_FLAG([-D_FORTIFY_SOURCE=2],
-  [AC_MSG_ERROR(Cannot enable -D_FORTIFY_SOURCE=2)])
+  AX_CHECK_PREPROC_FLAG([-D_FORTIFY_SOURCE=2],[
+    AX_CHECK_PREPROC_FLAG([-U_FORTIFY_SOURCE],[
+      HARDENED_CPPFLAGS="$HARDENED_CPPFLAGS -U_FORTIFY_SOURCE"
+    ],[AC_MSG_ERROR(Cannot enable -U_FORTIFY_SOURCE)])
+    HARDENED_CPPFLAGS="$HARDENED_CPPFLAGS -D_FORTIFY_SOURCE=2"
+  	],[AC_MSG_ERROR(Cannot enable -D_FORTIFY_SOURCE=2)])
 
    if test x$BUILD_OS != xdarwin; then
      AX_CHECK_LINK_FLAG([[-Wl,-z,relro]], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,-z,relro"],[AC_MSG_ERROR(Cannot enable RELRO)])
