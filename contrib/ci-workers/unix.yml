@@ -1,6 +1,6 @@
 ---
 - name: Configure a Buildbot worker for Zcash CI
-  hosts: bitcoinz-ci-worker-unix
+  hosts: zcash-ci-worker-unix
   become: true
   gather_facts: False
 

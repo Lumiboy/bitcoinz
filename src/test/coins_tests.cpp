@@ -17,7 +17,7 @@
 #include <map>
 
 #include <boost/test/unit_test.hpp>
-#include "bitcoinz/IncrementalMerkleTree.hpp"
+#include "zcash/IncrementalMerkleTree.hpp"
 
 namespace
 {

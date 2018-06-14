@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "bitcoinz/Address.hpp"
+#include "zcash/Address.hpp"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
 #include "util.h"

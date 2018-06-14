@@ -1,9 +1,9 @@
-*** Warning: Do not assume Tor support does the correct thing in Zcash; better Tor support is a future feature goal. ***
+*** Warning: Do not assume Tor support does the correct thing in BitcoinZ; better Tor support is a future feature goal. ***
 
 TOR SUPPORT IN BITCOINZ
 ====================
 
-It is possible to run Zcash as a Tor hidden service, and connect to such services.
+It is possible to run BitcoinZ as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many distributions default to having a SOCKS proxy listening on port 9050, but others may not. In particular, the Tor Browser Bundle defaults to listening on port 9150. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.html.en#TBBSocksPort) for how to properly
 configure Tor.
@@ -36,7 +36,7 @@ In a typical situation, this suffices to run behind a Tor proxy:
 	./bitcoinzd -proxy=127.0.0.1:9050
 
 
-2. Run a Zcash hidden server
+2. Run a BitcoinZ hidden server
 ----------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
@@ -50,7 +50,7 @@ config file):
 The directory can be different of course, but (both) port numbers should be equal to
 your bitcoinzd's P2P listen port (8233 by default).
 
-	-externalip=X   You can tell Zcash about its publicly reachable address using
+	-externalip=X   You can tell BitcoinZ about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
 	                configuration, you can find your onion address in
 	                /var/lib/tor/bitcoinz-service/hostname. Onion addresses are given
@@ -96,15 +96,15 @@ for normal IPv4/IPv6 communication, use:
 
 Starting with Tor version 0.2.7.1 it is possible, through Tor's control socket
 API, to create and destroy 'ephemeral' hidden services programmatically.
-Zcash has been updated to make use of this.
+BitcoinZ has been updated to make use of this.
 
 This means that if Tor is running (and proper authentication has been configured),
-Zcash automatically creates a hidden service to listen on. Zcash will also use Tor
+BitcoinZ automatically creates a hidden service to listen on. BitcoinZ will also use Tor
 automatically to connect to other .onion nodes if the control socket can be
 successfully opened. This will positively affect the number of available .onion
 nodes and their usage.
 
-This new feature is enabled by default if Zcash is listening (`-listen`), and
+This new feature is enabled by default if BitcoinZ is listening (`-listen`), and
 requires a Tor connection to work. It can be explicitly disabled with `-listenonion=0`
 and, if not disabled, configured using the `-torcontrol` and `-torpassword` settings.
 To show verbose debugging information, pass `-debug=tor`.
@@ -121,11 +121,11 @@ of the `-torpassword` flag and a `hash-password` which can be enabled and specif
 Tor configuration.
 
 
-4. Connect to a Zcash hidden server
+4. Connect to a BitcoinZ hidden server
 -----------------------------------
 
 To test your set-up, you might want to try connecting via Tor on a different computer to just a
-a single Zcash hidden server. Launch bitcoinzd as follows:
+a single BitcoinZ hidden server. Launch bitcoinzd as follows:
 
 	./bitcoinzd -onion=127.0.0.1:9050 -connect=zctestseie6wxgio.onion
 

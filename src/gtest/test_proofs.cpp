@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "bitcoinz/Proof.hpp"
+#include "zcash/Proof.hpp"
 
 #include <iostream>
 

@@ -24,8 +24,8 @@
 #include "paymentdisclosure.h"
 #include "paymentdisclosuredb.h"
 
-#include "bitcoinz/Note.hpp"
-#include "bitcoinz/NoteEncryption.hpp"
+#include "zcash/Note.hpp"
+#include "zcash/NoteEncryption.hpp"
 
 using namespace std;
 using namespace libzcash;

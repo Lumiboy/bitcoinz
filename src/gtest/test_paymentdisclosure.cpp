@@ -4,7 +4,7 @@
 #include "utilmoneystr.h"
 #include "chainparams.h"
 #include "utilstrencodings.h"
-#include "bitcoinz/Address.hpp"
+#include "zcash/Address.hpp"
 #include "wallet/wallet.h"
 #include "amount.h"
 #include <memory>
@@ -28,7 +28,7 @@ using namespace std;
 
 /*
     To run tests:
-    ./bitcoinz-gtest --gtest_filter="paymentdisclosure.*"
+    ./zcash-gtest --gtest_filter="paymentdisclosure.*"
 
     Note: As an experimental feature, writing your own tests may require option flags to be set.
     mapArgs["-experimentalfeatures"] = true;
@@ -131,7 +131,7 @@ TEST(paymentdisclosure, mainnet) {
         // Modify this local variable and confirm it no longer matches
         info2.esk = random_uint256();
         info2.joinSplitPrivKey = random_uint256();
-        info2.zaddr = libzcash::SpendingKey::random().address();        
+        info2.zaddr = libzcash::SpendingKey::random().address();
         ASSERT_NE(info, info2);
 
         // Using the payment info object, let's create a dummy payload

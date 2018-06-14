@@ -8,7 +8,7 @@
 
 #include <string>
 
-#include "bitcoinz/JoinSplit.hpp"
+#include "zcash/JoinSplit.hpp"
 
 class CScheduler;
 class CWallet;

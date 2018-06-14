@@ -1,7 +1,7 @@
 #ifndef ZC_JOINSPLIT_H_
 #define ZC_JOINSPLIT_H_
 
-#include "BitcoinZ.h"
+#include "Zcash.h"
 #include "Proof.hpp"
 #include "Address.hpp"
 #include "Note.hpp"

@@ -15,10 +15,10 @@
 
 #include <boost/array.hpp>
 
-#include "bitcoinz/NoteEncryption.hpp"
-#include "bitcoinz/BitcoinZ.h"
-#include "bitcoinz/JoinSplit.hpp"
-#include "bitcoinz/Proof.hpp"
+#include "zcash/NoteEncryption.hpp"
+#include "zcash/Zcash.h"
+#include "zcash/JoinSplit.hpp"
+#include "zcash/Proof.hpp"
 
 class JSDescription
 {

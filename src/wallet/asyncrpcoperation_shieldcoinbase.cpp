@@ -18,7 +18,7 @@
 #include "script/interpreter.h"
 #include "utiltime.h"
 #include "rpcprotocol.h"
-#include "bitcoinz/IncrementalMerkleTree.hpp"
+#include "zcash/IncrementalMerkleTree.hpp"
 #include "sodium.h"
 #include "miner.h"
 

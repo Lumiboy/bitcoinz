@@ -6,8 +6,8 @@ transactions between applications.  AMQP supports both broker and
 brokerless messaging.  AMQP 1.0 is an open standard and has been
 ratified as ISO/IEC 19464.
 
-The Zcash daemon can be configured to act as a trusted "border
-router", implementing the Zcash P2P protocol and relay, making
+The BitcoinZ daemon can be configured to act as a trusted "border
+router", implementing the BitcoinZ P2P protocol and relay, making
 consensus decisions, maintaining the local blockchain database,
 broadcasting locally generated transactions into the network, and
 providing a queryable RPC interface to interact on a polled basis for
@@ -31,7 +31,7 @@ buffering or reassembly.
 
 ## Prerequisites
 
-The AMQP feature in Zcash requires [Qpid Proton](https://qpid.apache.org/proton/)
+The AMQP feature in BitcoinZ requires [Qpid Proton](https://qpid.apache.org/proton/)
 version 0.17 or newer, which you will need to install if you are not
 using the depends system. Typically, it is packaged by distributions as
 something like *libqpid-proton*. The C++ wrapper for AMQP *is* required.
@@ -105,7 +105,7 @@ No authentication or authorization is done on peers that bitcoinzd connects
 to; it is assumed that the AMQP link is exposed only to trusted entities,
 using other means such as firewalling.
 
-TLS support may be added once OpenSSL has been removed from the Zcash
+TLS support may be added once OpenSSL has been removed from the BitcoinZ
 project and alternative TLS implementations have been evaluated.
 
 SASL support may be added in a future update for secure communication.
@@ -120,4 +120,3 @@ a problem confirming receipt.  Support for delivery guarantees such as
 
 Currently, bitcoinzd appends an up-counting sequence number to each notification
 which allows listeners to detect lost notifications.
-

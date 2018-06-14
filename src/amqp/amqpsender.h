@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOINZ_AMQP_AMQPSENDER_H
-#define BITCOINZ_AMQP_AMQPSENDER_H
+#ifndef ZCASH_AMQP_AMQPSENDER_H
+#define ZCASH_AMQP_AMQPSENDER_H
 
 #include "amqpconfig.h"
 
@@ -112,4 +112,4 @@ class AMQPSender : public proton::messaging_handler {
 };
 
 
-#endif //BITCOINZ_AMQP_AMQPSENDER_H
+#endif //ZCASH_AMQP_AMQPSENDER_H

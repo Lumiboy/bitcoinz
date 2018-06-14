@@ -4,7 +4,7 @@
 
 #include "../util.h"
 #include "primitives/transaction.h"
-#include "bitcoinz/JoinSplit.hpp"
+#include "zcash/JoinSplit.hpp"
 
 #include <libsnark/common/profiling.hpp>
 

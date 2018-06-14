@@ -64,7 +64,7 @@ def check_security_hardening():
 
     ret &= test_rpath_runpath('src/bitcoinzd')
     ret &= test_rpath_runpath('src/bitcoinz-cli')
-    ret &= test_rpath_runpath('src/bitcoinz-gtest')
+    ret &= test_rpath_runpath('src/zcash-gtest')
     ret &= test_rpath_runpath('src/bitcoinz-tx')
     ret &= test_rpath_runpath('src/test/test_bitcoin')
     ret &= test_rpath_runpath('src/bitcoinz/GenerateParams')
@@ -73,7 +73,7 @@ def check_security_hardening():
     # is enabled for the entire binary. See issue #915.
     ret &= test_fortify_source('src/bitcoinzd')
     ret &= test_fortify_source('src/bitcoinz-cli')
-    ret &= test_fortify_source('src/bitcoinz-gtest')
+    ret &= test_fortify_source('src/zcash-gtest')
     ret &= test_fortify_source('src/bitcoinz-tx')
     ret &= test_fortify_source('src/test/test_bitcoin')
     ret &= test_fortify_source('src/bitcoinz/GenerateParams')
@@ -136,7 +136,7 @@ STAGES = [
 
 STAGE_COMMANDS = {
     'btest': [repofile('src/test/test_bitcoin'), '-p'],
-    'gtest': [repofile('src/bitcoinz-gtest')],
+    'gtest': [repofile('src/zcash-gtest')],
     'sec-hard': check_security_hardening,
     'no-dot-so': ensure_no_dot_so_in_depends,
     'util-test': util_test,

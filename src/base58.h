@@ -20,7 +20,7 @@
 #include "script/script.h"
 #include "script/standard.h"
 #include "support/allocators/zeroafterfree.h"
-#include "bitcoinz/Address.hpp"
+#include "zcash/Address.hpp"
 
 #include <string>
 #include <vector>

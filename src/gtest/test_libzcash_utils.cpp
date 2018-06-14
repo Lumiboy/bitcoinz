@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "bitcoinz/util.h"
+#include "zcash/util.h"
 
 TEST(libzcash_utils, convertBytesVectorToVector)
 {

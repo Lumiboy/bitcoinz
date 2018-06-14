@@ -9,7 +9,7 @@
 #include "serialize.h"
 #include "streams.h"
 #include "support/allocators/secure.h"
-#include "bitcoinz/Address.hpp"
+#include "zcash/Address.hpp"
 
 class uint256;
 

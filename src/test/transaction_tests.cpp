@@ -30,9 +30,9 @@
 
 #include <univalue.h>
 
-#include "bitcoinz/Note.hpp"
-#include "bitcoinz/Address.hpp"
-#include "bitcoinz/Proof.hpp"
+#include "zcash/Note.hpp"
+#include "zcash/Address.hpp"
+#include "zcash/Proof.hpp"
 
 using namespace std;
 

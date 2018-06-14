@@ -5,7 +5,7 @@
 #ifdef ENABLE_WALLET
 #include "wallet/crypter.h"
 #endif
-#include "bitcoinz/Address.hpp"
+#include "zcash/Address.hpp"
 
 TEST(keystore_tests, store_and_retrieve_spending_key) {
     CBasicKeyStore keyStore;

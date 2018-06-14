@@ -48,7 +48,7 @@ RUN mkdir -p /bitcoinz/data
 # Copy binaries from build container
 COPY --from=build /usr/local/src/src/bitcoinzd /usr/local/bin
 COPY --from=build /usr/local/src/src/bitcoinz-cli /usr/local/bin
-COPY --from=build /usr/local/src/src/bitcoinz-gtest /usr/local/bin
+COPY --from=build /usr/local/src/src/zcash-gtest /usr/local/bin
 COPY --from=build /usr/local/src/src/bitcoinz-tx /usr/local/bin
 COPY contrib/docker/cli /usr/local/bin
 
@@ -60,4 +60,4 @@ COPY --from=build /root/.zcash-params /bitcoinz/.zcash-params
 RUN chown -R bitcoinz: /bitcoinz
 USER bitcoinz
 WORKDIR /bitcoinz
-CMD ["bitcoinzd", "--datadir=/bitcoinz/data"]
+CMD ["bitcoinzd", "-datadir=/bitcoinz/data"]

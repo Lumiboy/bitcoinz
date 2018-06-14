@@ -82,7 +82,7 @@ bool AppInit(int argc, char* argv[])
         else
         {
             strUsage += "\n" + _("Usage:") + "\n" +
-                  "  bitcoinzd [options]                     " + _("Start BitcoinZ Daemon") + "\n";
+                  "  bitcoinzd [options]                  " + _("Start BitcoinZ Daemon") + "\n";
 
             strUsage += "\n" + HelpMessage(HMM_BITCOIND);
         }
@@ -101,7 +101,7 @@ bool AppInit(int argc, char* argv[])
         try
         {
             ReadConfigFile(mapArgs, mapMultiArgs);
-        } catch (const missing_bitcoinz_conf& e) {
+        } catch (const missing_zcash_conf& e) {
             fprintf(stderr,
                 (_("Before starting bitcoinzd, you need to create a configuration file:\n"
                    "%s\n"

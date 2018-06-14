@@ -23,8 +23,8 @@ BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
 BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-BITCOIN_INCLUDES += -I$(srcdir)/snark/build/include
-BITCOIN_INCLUDES += -I$(srcdir)/snark/build/include/libsnark
+BITCOIN_INCLUDES += -I$(srcdir)/snark
+BITCOIN_INCLUDES += -I$(srcdir)/snark/libsnark
 BITCOIN_INCLUDES += -I$(srcdir)/univalue/include
 
 LIBBITCOIN_SERVER=libbitcoin_server.a
@@ -34,18 +34,12 @@ LIBBITCOIN_CLI=libbitcoin_cli.a
 LIBBITCOIN_UTIL=libbitcoin_util.a
 LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
-LIBSNARK=snark/build/lib/libsnark.a
+LIBSNARK=snark/libsnark.a
 LIBUNIVALUE=univalue/libunivalue.la
 LIBZCASH=libzcash.a
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C $(@D) $(@F)
-		
-# A phony target is included here to ensure libsnark is built first, so that its
-# header files are collated for use in later build steps.
-# See https://stackoverflow.com/a/10726725
--include collate-libsnark
-collate-libsnark: $(LIBSNARK)
 
 LIBSNARK_CXXFLAGS = -fPIC -DBINARY_OUTPUT -DNO_PT_COMPRESSION=1 -fstack-protector-all
 LIBSNARK_CONFIG_FLAGS = CURVE=ALT_BN128 NO_PROCPS=1 NO_DOCS=1 STATIC=1 NO_SUPERCOP=1 FEATUREFLAGS=-DMONTGOMERY_OUTPUT NO_COPY_DEPINST=1 NO_COMPILE_LIBGTEST=1
@@ -54,10 +48,10 @@ LIBSNARK_CONFIG_FLAGS += MULTICORE=1
 endif
 
 $(LIBSNARK): $(wildcard snark/src/*)
-	$(AM_V_at) CXXFLAGS="$(LIBSNARK_CXXFLAGS)" $(MAKE) $(AM_MAKEFLAGS) -C snark/ install PREFIX=$(srcdir)/build DEPINST="$(LIBSNARK_DEPINST)" $(LIBSNARK_CONFIG_FLAGS) OPTFLAGS="-O2 -march=x86-64"
+	$(AM_V_at) CXXFLAGS="$(LIBSNARK_CXXFLAGS)" $(MAKE) $(AM_MAKEFLAGS) -C snark/ DEPINST="$(LIBSNARK_DEPINST)" $(LIBSNARK_CONFIG_FLAGS) OPTFLAGS="-O2 -march=x86-64"
 
 libsnark-tests: $(wildcard snark/src/*)
-	$(AM_V_at) CXXFLAGS="$(LIBSNARK_CXXFLAGS)" $(MAKE) $(AM_MAKEFLAGS) -C snark/ check PREFIX=$(srcdir)/build DEPINST="$(LIBSNARK_DEPINST)" $(LIBSNARK_CONFIG_FLAGS) OPTFLAGS="-O2 -march=x86-64"
+	$(AM_V_at) CXXFLAGS="$(LIBSNARK_CXXFLAGS)" $(MAKE) $(AM_MAKEFLAGS) -C snark/ check DEPINST="$(LIBSNARK_DEPINST)" $(LIBSNARK_CONFIG_FLAGS) OPTFLAGS="-O2 -march=x86-64"
 
 $(LIBUNIVALUE): $(wildcard univalue/lib/*)
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue/
@@ -102,15 +96,15 @@ if BUILD_BITCOIN_UTILS
 endif
 
 LIBZCASH_H = \
-  bitcoinz/IncrementalMerkleTree.hpp \
-  bitcoinz/NoteEncryption.hpp \
-  bitcoinz/Address.hpp \
-  bitcoinz/JoinSplit.hpp \
-  bitcoinz/Note.hpp \
-  bitcoinz/prf.h \
-  bitcoinz/Proof.hpp \
-  bitcoinz/util.h \
-  bitcoinz/BitcoinZ.h
+  zcash/IncrementalMerkleTree.hpp \
+  zcash/NoteEncryption.hpp \
+  zcash/Address.hpp \
+  zcash/JoinSplit.hpp \
+  zcash/Note.hpp \
+  zcash/prf.h \
+  zcash/Proof.hpp \
+  zcash/util.h \
+  zcash/Zcash.h
 
 .PHONY: FORCE collate-libsnark check-symbols check-security
 # bitcoin core #
@@ -510,27 +504,24 @@ bitcoinz_tx_LDADD = \
 bitcoinz_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# bitcoinz protocol primitives #
+# zcash protocol primitives #
 libzcash_a_SOURCES = \
-  bitcoinz/IncrementalMerkleTree.cpp \
-  bitcoinz/NoteEncryption.cpp \
-  bitcoinz/Address.cpp \
-  bitcoinz/JoinSplit.cpp \
-  bitcoinz/Proof.cpp \
-  bitcoinz/Note.cpp \
-  bitcoinz/prf.cpp \
-  bitcoinz/util.cpp \
-  bitcoinz/circuit/commitment.tcc \
-  bitcoinz/circuit/gadget.tcc \
-  bitcoinz/circuit/merkle.tcc \
-  bitcoinz/circuit/note.tcc \
-  bitcoinz/circuit/prfs.tcc \
-  bitcoinz/circuit/utils.tcc
+  zcash/IncrementalMerkleTree.cpp \
+  zcash/NoteEncryption.cpp \
+  zcash/Address.cpp \
+  zcash/JoinSplit.cpp \
+  zcash/Proof.cpp \
+  zcash/Note.cpp \
+  zcash/prf.cpp \
+  zcash/util.cpp \
+  zcash/circuit/commitment.tcc \
+  zcash/circuit/gadget.tcc \
+  zcash/circuit/merkle.tcc \
+  zcash/circuit/note.tcc \
+  zcash/circuit/prfs.tcc \
+  zcash/circuit/utils.tcc
 
-if HAVE_OPENMP
-libzcash_a_CPPFLAGS = -DMULTICORE -fopenmp
-endif
-libzcash_a_CPPFLAGS := $(libzcash_a_CPPFLAGS) -fPIC -DBINARY_OUTPUT -DCURVE_ALT_BN128 -DBOOST_SPIRIT_THREADSAFE -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS $(HARDENED_CPPFLAGS) -pipe -O1 -g -Wstack-protector -fstack-protector-all -fPIE -fvisibility=hidden -DSTATIC $(BITCOIN_INCLUDES)
+libzcash_a_CPPFLAGS = -DMULTICORE -fopenmp -fPIC -DBINARY_OUTPUT -DCURVE_ALT_BN128 -DBOOST_SPIRIT_THREADSAFE -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS $(HARDENED_CPPFLAGS) -pipe -O1 -g -Wstack-protector -fstack-protector-all -fPIE -fvisibility=hidden -DSTATIC $(BITCOIN_INCLUDES)
 
 libzcash_a_CXXFLAGS = $(HARDENED_CXXFLAGS) -fwrapv -fno-strict-aliasing
 

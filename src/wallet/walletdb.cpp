@@ -14,7 +14,7 @@
 #include "util.h"
 #include "utiltime.h"
 #include "wallet/wallet.h"
-#include "bitcoinz/Proof.hpp"
+#include "zcash/Proof.hpp"
 
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>
@@ -913,7 +913,7 @@ DBErrors CWalletDB::ZapWalletTx(CWallet* pwallet, vector<CWalletTx>& vWtx)
 void ThreadFlushWalletDB(const string& strFile)
 {
     // Make this thread recognisable as the wallet flushing thread
-    RenameThread("bitcoinz-wallet");
+    RenameThread("zcash-wallet");
 
     static bool fOneThread;
     if (fOneThread)

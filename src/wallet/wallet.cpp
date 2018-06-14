@@ -16,7 +16,7 @@
 #include "script/sign.h"
 #include "timedata.h"
 #include "utilmoneystr.h"
-#include "bitcoinz/Note.hpp"
+#include "zcash/Note.hpp"
 #include "crypter.h"
 
 #include <assert.h>

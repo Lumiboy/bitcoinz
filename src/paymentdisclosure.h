@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOINZ_PAYMENTDISCLOSURE_H
-#define BITCOINZ_PAYMENTDISCLOSURE_H
+#ifndef ZCASH_PAYMENTDISCLOSURE_H
+#define ZCASH_PAYMENTDISCLOSURE_H
 
 #include "uint256.h"
 #include "clientversion.h"
@@ -73,7 +73,7 @@ struct PaymentDisclosurePayload {
     uint8_t version;        // 0 = experimental, 1 = first production version, etc.
     uint256 esk;            // zcash/NoteEncryption.cpp
     uint256 txid;           // primitives/transaction.h
-    uint64_t js;            // Index into CTransaction.vjoinsplit
+    size_t js;              // Index into CTransaction.vjoinsplit
     uint8_t n;              // Index into JSDescription fields of length ZC_NUM_JS_OUTPUTS
     libzcash::PaymentAddress zaddr; // zcash/Address.hpp
     std::string message;     // parameter to RPC call
@@ -144,4 +144,4 @@ struct PaymentDisclosure {
 typedef std::pair<PaymentDisclosureKey, PaymentDisclosureInfo> PaymentDisclosureKeyInfo;
 
 
-#endif // BITCOINZ_PAYMENTDISCLOSURE_H
+#endif // ZCASH_PAYMENTDISCLOSURE_H

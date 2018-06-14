@@ -8,7 +8,7 @@
 #include "uint256.h"
 #include "serialize.h"
 
-#include "BitcoinZ.h"
+#include "Zcash.h"
 
 namespace libzcash {
 
